@@ -5,6 +5,7 @@ import { BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import { Header } from "./components/Header";
 import Grayscale from "./components/Grayscale";
 import Laplacian from "./components/Laplacian";
+import Watermark from "./components/Watermark";
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
         <Routes>
           <Route path="/grayscale" element={ <Grayscale /> }/>
           <Route path="/laplacian" element={ <Laplacian /> }/>
+          <Route path="/watermark" element={ <Watermark /> }/>
         </Routes>
       </div>
     </Router>
