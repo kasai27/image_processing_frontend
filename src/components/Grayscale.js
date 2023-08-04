@@ -39,7 +39,7 @@ const Grayscale = () => {
             {processedImage && (
               <div>
                 <p>Imgae Created!!</p>
-                <img src={`data:image/jpeg;base64,${processedImage}`} alt="processed" />
+                <img src={`data:image/jpeg;base64,${processedImage}`} alt="processed" width="300" height="300" />
               </div>
             )}
         </div>
