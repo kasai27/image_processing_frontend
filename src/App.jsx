@@ -6,6 +6,7 @@ import { Header } from "./components/Header";
 import Grayscale from "./components/Grayscale";
 import Laplacian from "./components/Laplacian";
 import Watermark from "./components/Watermark";
+import Detection from "./components/Detection";
 
 function App() {
 
@@ -17,6 +18,7 @@ function App() {
           <Route path="/grayscale" element={ <Grayscale /> }/>
           <Route path="/laplacian" element={ <Laplacian /> }/>
           <Route path="/watermark" element={ <Watermark /> }/>
+          <Route path="/detection" element={ <Detection /> }/>
         </Routes>
       </div>
     </Router>

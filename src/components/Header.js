@@ -18,6 +18,9 @@ export const Header = () => {
                 <li>
                     <Link to="/watermark">電子透かし処理</Link>
                 </li>
+                <li>
+                    <Link to="/detection">埋め込み情報抽出</Link>
+                </li>
             </ul>
         </nav>
     </header>
