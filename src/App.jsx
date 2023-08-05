@@ -12,7 +12,7 @@ function App() {
 
   return (
     <Router>
-      <div>
+      <div className="App">
         <Header />
         <Routes>
           <Route path="/grayscale" element={ <Grayscale /> }/>

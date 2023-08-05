@@ -4,8 +4,8 @@ import { Link } from 'react-router-dom';
 export const Header = () => {
   return (
     <header>
-        <div>
-            <h1>image processing</h1>
+        <div className='logo'>
+            <h3>image processing</h3>
         </div>
         <nav>
             <ul>
