@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Button from 'react-bootstrap/Button'
 
 const Laplacian = () => {
     // 選択された元の画像ファイルと変換後の画像ファイルを管理するための状態
@@ -28,12 +29,12 @@ const Laplacian = () => {
     };
 
     return (
-        <div>
+        <div className="container">
             {/* 画像ファイルの選択用の入力フィールド */}
             <input type="file" onChange={handleFileChange} />
 
             {/* 変換ボタン */}
-            <button onClick={handleLaplacian}>エッジ処理</button>
+            <Button onClick={handleLaplacian}>エッジ処理</Button>
 
             {/* 変換後の画像の表示 */}
             {processedImage && (

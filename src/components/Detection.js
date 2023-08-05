@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Button from 'react-bootstrap/Button'
 
 const Detection = () => {
     // 選択された元の画像ファイルと抽出したテキストを管理するための状態
@@ -29,12 +30,12 @@ const Detection = () => {
     };
 
     return (
-        <div>
+        <div className="container">
             {/* 画像ファイルの選択用の入力フィールド */}
             <input type="file" onChange={handleFileChange} />
 
             {/* 変換ボタン */}
-            <button onClick={handleDetection}>埋め込み情報抽出</button>
+            <Button onClick={handleDetection}>埋め込み情報抽出</Button>
             
             {/* 変換後の画像の表示 */}
             {text && (

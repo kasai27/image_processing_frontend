@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Button from 'react-bootstrap/Button'
 
 const Watermark = () => {
     // 選択された元の画像ファイルと変換後の画像ファイルを管理するための状態
@@ -38,13 +39,13 @@ const Watermark = () => {
     };
 
     return (
-        <div>
+        <div className="container">
             {/* 画像ファイルの選択用の入力フィールド */}
             <input type="file" onChange={handleFileChange} />
             {/* 埋め込みテキスト入力フィールド */}
             <input type="text" value={text} onChange={handleTextChange}/>
             {/* 変換ボタン */}
-            <button onClick={handleWatermark}>電子透かし処理</button>
+            <Button onClick={handleWatermark}>電子透かし処理</Button>
             
             {/* 変換後の画像の表示 */}
             {processedImage && (

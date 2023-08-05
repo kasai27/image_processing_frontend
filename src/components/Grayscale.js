@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import Button from 'react-bootstrap/Button'
 
 const Grayscale = () => {
     // 選択された元の画像ファイルと変換後の画像ファイルを管理するための状態
@@ -28,12 +29,12 @@ const Grayscale = () => {
     };
 
     return (
-        <div>
+        <div className="container">
             {/* 画像ファイルの選択用の入力フィールド */}
             <input type="file" onChange={handleFileChange} />
 
             {/* 変換ボタン */}
-            <button onClick={handleGray}>グレースケール化</button>
+            <Button onClick={handleGray}>グレースケール化</Button>
 
             {/* 変換後の画像の表示 */}
             {processedImage && (
