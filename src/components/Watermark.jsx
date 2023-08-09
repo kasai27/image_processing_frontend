@@ -1,22 +1,17 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Button from 'react-bootstrap/Button'
+import { useHandleImage } from "./hooks/useHandleImage";
 
 const Watermark = () => {
-    // 選択された元の画像ファイルと変換後の画像ファイルを管理するための状態
-    const [selectedFile, setSelectedFile] = useState(null);
-    const [processedImage, setProcessedImage] = useState(null);
+    // useHandleImage.jsから取得
+    const { selectedFile, processedImage, setProcessedImage, handleFileChange } = useHandleImage()
 
     // 埋め込みテキストを管理
     const [text, setText] = useState(null);
 
     // FastAPIのURL
     const url_watermark = "http://127.0.0.1:8000/watermark/";
-
-    // 画像ファイルをセット
-    const handleFileChange = (e) => {
-        setSelectedFile(e.target.files[0]);
-    };
 
     // テキストをセット
     const handleTextChange = (e) => {

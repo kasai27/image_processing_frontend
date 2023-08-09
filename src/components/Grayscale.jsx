@@ -1,18 +1,13 @@
-import React, { useState } from "react";
+import React from "react";
 import axios from "axios";
 import Button from 'react-bootstrap/Button'
+import { useHandleImage } from "./hooks/useHandleImage";
 
 const Grayscale = () => {
-    // 選択された元の画像ファイルと変換後の画像ファイルを管理するための状態
-    const [selectedFile, setSelectedFile] = useState(null);
-    const [processedImage, setProcessedImage] = useState(null);
-
+    // useHandleImage.jsから取得
+    const { selectedFile, processedImage, setProcessedImage, handleFileChange } = useHandleImage()
     // FastAPIのURL
     const url_gray = "http://127.0.0.1:8000/gray/";
-
-    const handleFileChange = (e) => {
-        setSelectedFile(e.target.files[0]);
-    };
     
     const handleGray = async () => {
         if (selectedFile) {
