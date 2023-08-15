@@ -13,7 +13,7 @@ export const Header = () => {
                     <Link to="/grayscale">グレースケール化</Link>
                 </li>
                 <li>
-                    <Link to="/laplacian">エッジ処理</Link>
+                    <Link to="/edge">エッジ処理</Link>
                 </li>
                 <li>
                     <Link to="/watermark">電子透かし処理</Link>
