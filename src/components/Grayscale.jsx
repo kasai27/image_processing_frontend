@@ -15,12 +15,25 @@ const Grayscale = () => {
             formData.append('file', selectedFile);
             
             try {
-              const response = await axios.post(url_gray, formData);
-              setProcessedImage(response.data.processed_image);
+              const response = await axios.post(url_gray, formData, {
+                headers: { 'Content-Type': 'multipart/form-data' },
+                responseType: 'arraybuffer',
+              });
+              
+              const blob = new Blob([response.data], { type: 'image/jpeg' });
+              const imageUrl = URL.createObjectURL(blob);
+              setProcessedImage(imageUrl);              
             } catch (error) {
-              console.error(error);
-            }
-        }   
+              console.error('Error uploading image: ', error);
+            };
+        };   
+    };
+
+    const handleSave = () => {
+        const link = document.createElement('a');
+        link.href = processedImage;
+        link.download = 'processed_image.jpg';
+        link.click();
     };
 
     return (
@@ -35,7 +48,9 @@ const Grayscale = () => {
             {processedImage && (
               <div>
                 <p>Imgae Created!!</p>
-                <img src={`data:image/jpeg;base64,${processedImage}`} alt="processed" width="300" height="300" />
+                <img src={processedImage} alt="processed" width="300" height="300" />
+                <br />
+                <Button onClick={handleSave}>保存</Button>
               </div>
             )}
         </div>
