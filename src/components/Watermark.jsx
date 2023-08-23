@@ -30,7 +30,7 @@ const Watermark = () => {
                 responseType: 'arraybuffer',
               });
               
-              const blob = new Blob([response.data], { type: 'image/jpeg' });
+              const blob = new Blob([response.data], { type: 'image/png' });
               const imageUrl = URL.createObjectURL(blob);
               setProcessedImage(imageUrl);              
             } catch (error) {
@@ -42,7 +42,7 @@ const Watermark = () => {
     const handleSave = () => {
         const link = document.createElement('a');
         link.href = processedImage;
-        link.download = 'processed_image.jpg';
+        link.download = 'processed_image.png';
         link.click();
     };
 
