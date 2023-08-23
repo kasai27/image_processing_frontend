@@ -48,6 +48,14 @@ const Edge = () => {
             <Button onClick={() => edgeProcessing("Laplacian")}>Laplacian</Button>{' '}
             <Button onClick={() => edgeProcessing("Canny")}>Canny</Button>{' '}
 
+            {/* 変換前の画像の表示 */}
+            {selectedFile && !processedImage && (
+              <div>
+                <p>selected image</p>
+                <img src={URL.createObjectURL(selectedFile)} alt="selected" width="300" height="300" />
+              </div>
+            )}
+
             {/* 変換後の画像の表示 */}
             {processedImage && (
               <div>

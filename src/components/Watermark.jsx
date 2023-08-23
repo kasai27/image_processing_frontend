@@ -54,6 +54,14 @@ const Watermark = () => {
             <input type="text" value={text} onChange={handleTextChange}/>
             {/* 変換ボタン */}
             <Button onClick={handleWatermark}>電子透かし処理</Button>
+
+            {/* 変換前の画像の表示 */}
+            {selectedFile && !processedImage && (
+              <div>
+                <p>selected image</p>
+                <img src={URL.createObjectURL(selectedFile)} alt="selected" width="300" height="300" />
+              </div>
+            )}
             
             {/* 変換後の画像の表示 */}
             {processedImage && (

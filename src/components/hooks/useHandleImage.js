@@ -8,6 +8,8 @@ export const useHandleImage = () => {
     // 選択した画像をセット
     const handleFileChange = (e) => {
         setSelectedFile(e.target.files[0]);
+        // 新しい画像を選択したら処理済み画像をクリア
+        setProcessedImage(null)
     };
 
     return { selectedFile, processedImage, setProcessedImage, handleFileChange }

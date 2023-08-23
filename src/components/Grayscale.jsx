@@ -6,6 +6,7 @@ import { useHandleImage } from "./hooks/useHandleImage";
 const Grayscale = () => {
     // useHandleImage.jsから取得
     const { selectedFile, processedImage, setProcessedImage, handleFileChange } = useHandleImage()
+
     // FastAPIのURL
     const url_gray = "http://127.0.0.1:8000/gray/";
     
@@ -43,6 +44,14 @@ const Grayscale = () => {
 
             {/* 変換ボタン */}
             <Button onClick={handleGray}>グレースケール化</Button>
+
+            {/* 変換前の画像の表示 */}
+            {selectedFile && !processedImage && (
+              <div>
+                <p>selected image</p>
+                <img src={URL.createObjectURL(selectedFile)} alt="selected" width="300" height="300" />
+              </div>
+            )}
 
             {/* 変換後の画像の表示 */}
             {processedImage && (
