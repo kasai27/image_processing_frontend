@@ -10,6 +10,9 @@ export const Header = () => {
         <nav>
             <ul>
                 <li>
+                    <Link to="/">ホーム</Link>
+                </li>
+                <li>
                     <Link to="/grayscale">グレースケール化</Link>
                 </li>
                 <li>

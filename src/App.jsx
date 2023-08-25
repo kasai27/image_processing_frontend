@@ -6,6 +6,7 @@ import Grayscale from "./components/Grayscale";
 import Edge from "./components/Edge";
 import Watermark from "./components/Watermark";
 import Detection from "./components/Detection";
+import Home from "./components/Home";
 
 function App() {
 
@@ -13,7 +14,9 @@ function App() {
     <Router>
       <div className="App">
         <Header />
+
         <Routes>
+          <Route path="/" element={ <Home /> }/>
           <Route path="/grayscale" element={ <Grayscale /> }/>
           <Route path="/edge" element={ <Edge /> }/>
           <Route path="/watermark" element={ <Watermark /> }/>

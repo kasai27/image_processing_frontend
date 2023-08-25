@@ -49,4 +49,16 @@ nav ul li a:hover {
     padding: 120px;
 }
 
+.container h1 {
+    text-align: center;
+    font-size: 50px;
+}
+
+.opencvImage {
+    object-fit: cover;
+    height: 200px;
+    width: 300px;
+    border-radius: 50%;
+    margin-bottom: 15px;
+}
 
