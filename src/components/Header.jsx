@@ -24,6 +24,9 @@ export const Header = () => {
             <li>
               <Link to="/detection">埋め込み情報抽出</Link>
             </li>
+            <li>
+              <Link to="/face_detection">顔検出</Link>
+            </li>
           </ul>
         </nav>
     </header>

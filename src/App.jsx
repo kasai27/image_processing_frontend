@@ -7,6 +7,7 @@ import Edge from "./components/Edge";
 import Watermark from "./components/Watermark";
 import Detection from "./components/Detection";
 import Home from "./components/Home";
+import FaceDetection from "./components/FaceDetection";
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
           <Route path="/edge" element={ <Edge /> }/>
           <Route path="/watermark" element={ <Watermark /> }/>
           <Route path="/detection" element={ <Detection /> }/>
+          <Route path="/face_detection" element={ <FaceDetection /> }/>
         </Routes>
       </div>
     </Router>
