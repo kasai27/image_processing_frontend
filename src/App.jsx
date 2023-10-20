@@ -18,11 +18,8 @@ function App() {
 
         <Routes>
           <Route path="/" element={ <Home /> }/>
-          <Route path="/grayscale" element={ <Grayscale /> }/>
-          <Route path="/edge" element={ <Edge /> }/>
           <Route path="/watermark" element={ <Watermark /> }/>
           <Route path="/detection" element={ <Detection /> }/>
-          <Route path="/face_detection" element={ <FaceDetection /> }/>
         </Routes>
       </div>
     </Router>

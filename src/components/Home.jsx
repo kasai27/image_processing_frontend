@@ -1,21 +1,115 @@
-import React from 'react'
-import opencvImage from '../Images/opencv.jpg'
+import React from "react";
+import axios from "axios";
+import Button from 'react-bootstrap/Button'
+import { useHandleImage } from "./hooks/useHandleImage";
 
 const Home = () => {
+  // useHandleImage.jsから取得
+  const { selectedFile, processedImage, setProcessedImage, handleFileChange } = useHandleImage()
+
+  // FastAPIのURL
+  const url_gray = "http://127.0.0.1:8000/gray/";
+  const url_edge = "http://127.0.0.1:8000/edge/";
+  const url_face_detection = "http://127.0.0.1:8000/face_detection/";
+    
+  const handleGray = async () => {
+    if (selectedFile) {
+      const formData = new FormData();
+      formData.append('file', selectedFile);
+      
+      try {
+        const response = await axios.post(url_gray, formData, {
+          headers: { 'Content-Type': 'multipart/form-data' },
+          responseType: 'arraybuffer',
+        });
+        
+        const blob = new Blob([response.data], { type: 'image/jpeg' });
+        const imageUrl = URL.createObjectURL(blob);
+        setProcessedImage(imageUrl);              
+      } catch (error) {
+        console.error('Error uploading image: ', error);
+      };
+    };   
+  };
+
+  const handleEdge = async (filter) => {
+    if (selectedFile) {
+      const formData = new FormData();
+      formData.append('file', selectedFile);
+      formData.append('filter_type', filter);
+            
+      try {
+        const response = await axios.post(url_edge, formData, {
+          headers: { 'Content-Type': 'multipart/form-data' },
+          responseType: 'arraybuffer',
+        });
+        
+        const blob = new Blob([response.data], { type: 'image/jpeg' });
+        const imageUrl = URL.createObjectURL(blob);
+        setProcessedImage(imageUrl);              
+      } catch (error) {
+        console.error('Error uploading image: ', error);
+      };
+    };
+  };
+
+  const handleFaceDetection = async () => {
+    if (selectedFile) {
+      const formData = new FormData();
+      formData.append('file', selectedFile);
+
+      try {
+        const response = await axios.post(url_face_detection, formData, {
+          headers: { 'Content-Type': 'multipart/form-data' },
+          responseType: 'arraybuffer',
+        });
+
+        const blob = new Blob([response.data], { type: 'image/jpeg' });
+        const imageUrl = URL.createObjectURL(blob);
+        setProcessedImage(imageUrl);
+      } catch (error) {
+        console.error('Error uploading image: ', error);
+      };
+    };
+  };
+
+  const handleSave = () => {
+    const link = document.createElement('a');
+    link.href = processedImage;
+    link.download = 'processed_image.jpg';
+    link.click();
+  };
+
   return (
-    <div className='container text-center'>
-      <h1>Open CV</h1>
+    <div className="container">
+      {/* 画像ファイルの選択用の入力フィールド */}
+      <input type="file" onChange={handleFileChange} />
 
-      <img src={opencvImage} className='opencvImage' />
+      {/* 変換ボタン */}
+      <Button onClick={handleGray}>グレースケール化</Button>{' '}
+      <Button onClick={() => handleEdge("Sobel")}>Sobel</Button>{' '}
+      <Button onClick={() => handleEdge("Laplacian")}>Laplacian</Button>{' '}
+      <Button onClick={() => handleEdge("Canny")}>Canny</Button>{' '}
+      <Button onClick={handleFaceDetection}>顔検出</Button>
 
-      <p>
-        OpenCVは、その名の通りオープンソースのコンピュータビジョン用ライブラリです。
-        コンピュータビジョンは、コンピュータによる視覚についての研究分野の名称ですが、
-        画像認識とほぼ同義と考えていただければわかりやすいかと思います。OpenCVは、元々はインテルが開発したプログラムで、現在でも開発が進められています。
-        ごく一部のアルゴリズムは特許を取得されているため、それらを商用利用する際には確認が必要ですが、基本的に無料で利用することができ、
-        商用利用も可能です。また、クロスプラットフォームのライブラリで、Linux、MacOS、Windowsや、iOS、AndroidといったOSとC++、Python、Java
-        の三つのプログラミング言語に対応しているため、あまり環境の制約を受けることなく活用することができます。
-      </p>
+
+      {/* 変換前の画像の表示 */}
+      {selectedFile && !processedImage && (
+        <div>
+          <p>画像が選択されました！</p>
+          <img src={URL.createObjectURL(selectedFile)} alt="selected" width="300" height="300" />
+        </div>
+      )}
+
+      {/* 変換後の画像の表示 */}
+      {processedImage && (
+        <div>
+          <p>画像処理が行われました！</p>
+          <img src={processedImage} alt="processed" width="300" height="300" />
+          <br />
+          <Button onClick={handleSave}>保存</Button>
+        </div>
+      )}
     </div>
   );
 };

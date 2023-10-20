@@ -8,7 +8,7 @@ const FaceDetection = () => {
   const { selectedFile, processedImage, setProcessedImage, handleFileChange } = useHandleImage()
 
   // FastAPIのURL
-  const url_gray = "http://127.0.0.1:8000/face_detection/";
+  const url_face_detection = "http://127.0.0.1:8000/face_detection/";
 
   const handleFaceDetection = async () => {
     if (selectedFile) {
@@ -16,7 +16,7 @@ const FaceDetection = () => {
       formData.append('file', selectedFile);
 
       try {
-        const response = await axios.post(url_gray, formData, {
+        const response = await axios.post(url_face_detection, formData, {
           headers: { 'Content-Type': 'multipart/form-data' },
           responseType: 'arraybuffer',
         });

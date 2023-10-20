@@ -5,7 +5,7 @@ export const Header = () => {
   return (
     <header>
       <div className='logo'>
-        <h3>image processing</h3>
+        <h3>画像処理webアプリ</h3>
         </div>
         <nav>
           <ul>
@@ -13,19 +13,10 @@ export const Header = () => {
               <Link to="/">ホーム</Link>
             </li>
             <li>
-              <Link to="/grayscale">グレースケール化</Link>
+              <Link to="/watermark">電子透かし</Link>
             </li>
             <li>
-              <Link to="/edge">エッジ処理</Link>
-            </li>
-            <li>
-              <Link to="/watermark">電子透かし処理</Link>
-            </li>
-            <li>
-              <Link to="/detection">埋め込み情報抽出</Link>
-            </li>
-            <li>
-              <Link to="/face_detection">顔検出</Link>
+              <Link to="/detection">埋め込み抽出</Link>
             </li>
           </ul>
         </nav>
