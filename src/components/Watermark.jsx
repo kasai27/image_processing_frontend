@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Button from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form'
+import Row from 'react-bootstrap/Row'
+import Col from 'react-bootstrap/Col'
 import { useHandleImage } from "./hooks/useHandleImage";
 
 const Watermark = () => {
@@ -49,29 +52,40 @@ const Watermark = () => {
   return (
     <div className="container">
       {/* 画像ファイルの選択用の入力フィールド */}
-      <input type="file" onChange={handleFileChange} />
+      <Form.Group controlId="formFile" className="mb-3">
+        <Col sm="5">
+          <Form.Control type="file" onChange={handleFileChange} />
+        </Col>
+      </Form.Group>
       {/* 埋め込みテキスト入力フィールド */}
-      <input type="text" value={text} onChange={handleTextChange} />
+      <Form.Group as={Row} className="mb-3">
+        <Form.Label column sm="2">埋め込むテキスト</Form.Label>
+        <Col sm="5">
+          <Form.Control type="text" value={text} onChange={handleTextChange} />
+        </Col>
+      </Form.Group>
       {/* 変換ボタン */}
       <Button onClick={handleWatermark}>電子透かし処理</Button>
 
-      {/* 変換前の画像の表示 */}
-      {selectedFile && !processedImage && (
-        <div>
-          <p>selected image</p>
-          <img src={URL.createObjectURL(selectedFile)} alt="selected" width="300" height="300" />
-        </div>
-      )}
+      <div className="image">
+        {/* 変換前の画像の表示 */}
+        {selectedFile && (
+          <div className="selectedImage">
+            <p>選択された画像</p>
+            <img src={URL.createObjectURL(selectedFile)} alt="selected" width="300" height="300" />
+          </div>
+        )}
 
-      {/* 変換後の画像の表示 */}
-      {processedImage && (
-        <div>
-          <p>Imgae Created!!</p>
-          <img src={processedImage} alt="processed" width="300" height="300" />
-          <br />
-          <Button onClick={handleSave}>保存</Button>
-        </div>
-      )}
+        {/* 変換後の画像の表示 */}
+        {processedImage && (
+          <div className="processedImage">
+            <p>画像処理後の画像</p>
+            <img src={processedImage} alt="processed" width="300" height="300" />
+            <br />
+            <Button onClick={handleSave}>保存</Button>
+          </div>
+        )}
+      </div>
     </div>
   );
 };

@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
 import Button from 'react-bootstrap/Button'
+import Form from 'react-bootstrap/Form'
+import Col from 'react-bootstrap/Col'
 
 const Detection = () => {
   // 選択された元の画像ファイルと抽出したテキストを管理するための状態
@@ -32,15 +34,27 @@ const Detection = () => {
   return (
     <div className="container">
       {/* 画像ファイルの選択用の入力フィールド */}
-      <input type="file" onChange={handleFileChange} />
+      <Form.Group controlId="formFile" className="mb-3">
+        <Col sm="5">
+          <Form.Control type="file" onChange={handleFileChange} />
+        </Col>
+      </Form.Group>
 
       {/* 変換ボタン */}
       <Button onClick={handleDetection}>埋め込み情報抽出</Button>
 
-      {/* 変換後の画像の表示 */}
+      {/* 変換前の画像の表示 */}
+      {selectedFile && (
+        <div className="selectedImage">
+          <p>選択された画像</p>
+          <img src={URL.createObjectURL(selectedFile)} alt="selected" width="300" height="300" />
+        </div>
+      )}
+
+      {/* 埋め込んだテキストの表示 */}
       {text && (
         <div>
-          <p>text extract!!</p>
+          <p>埋め込んだテキスト</p>
           <p>{text}</p>
         </div>
       )}

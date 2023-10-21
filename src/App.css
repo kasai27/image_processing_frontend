@@ -62,3 +62,14 @@ nav ul li a:hover {
     margin-bottom: 15px;
 }
 
+.image {
+    display: flex;
+}
+
+.selectedImage {
+    margin: 30px;
+}
+
+.processedImage {
+    margin: 30px;
+}
