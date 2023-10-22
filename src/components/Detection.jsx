@@ -10,7 +10,7 @@ const Detection = () => {
   const [text, setText] = useState(null);
 
   // FastAPIのURL
-  const url_detection = "http://127.0.0.1:8000/detection/";
+  const url_detection = "https://image-processing-1o5o.onrender.com/detection/";
 
   // 画像ファイルをセット
   const handleFileChange = (e) => {

@@ -14,7 +14,7 @@ const Watermark = () => {
   const [text, setText] = useState(null);
 
   // FastAPIのURL
-  const url_watermark = "http://127.0.0.1:8000/watermark/";
+  const url_watermark = "https://image-processing-1o5o.onrender.com/watermark/";
 
   // テキストをセット
   const handleTextChange = (e) => {

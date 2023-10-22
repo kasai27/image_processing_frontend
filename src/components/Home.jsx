@@ -10,9 +10,9 @@ const Home = () => {
   const { selectedFile, processedImage, setProcessedImage, handleFileChange } = useHandleImage()
 
   // FastAPIのURL
-  const url_gray = "http://127.0.0.1:8000/gray/";
-  const url_edge = "http://127.0.0.1:8000/edge/";
-  const url_face_detection = "http://127.0.0.1:8000/face_detection/";
+  const url_gray = "https://image-processing-1o5o.onrender.com/gray/";
+  const url_edge = "https://image-processing-1o5o.onrender.com/edge/";
+  const url_face_detection = "https://image-processing-1o5o.onrender.com/face_detection/";
     
   const handleGray = async () => {
     if (selectedFile) {
